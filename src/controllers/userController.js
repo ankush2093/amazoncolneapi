@@ -175,11 +175,11 @@ const resetPassword = async (req, res) => {
     await user.save();
     await Otp.deleteMany({ user: user._id });
 
-    res.json({ message: "✅ Password reset successfully!", color: "green" });
+    res.json({ message: "Password reset successfully!", color: "green" });
 
   } catch (error) {
     console.error("Error resetting password:", error);
-    res.status(500).json({ message: "❌ Server error. Try again." });
+    res.status(500).json({ message: "Server error. Try again." });
   }
 };
 
