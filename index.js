@@ -8,13 +8,16 @@ const connectDB = require("./src/config/dbConfig");
 // const reviewRoutes = require("./src/routes/reviewRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const productRoutes = require("./src/routes/productRoute")
-
+// const paymentRoutes =require("./src/routes/paymentRoutes")
+const orderRoutes  = require("./src/routes/orderRoutes")
 
 
 const app = express();
 
-app.use(cors());
-
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true, 
+}));
 app.use(bodyParser.json());
 app.use(express.json());
 
@@ -36,8 +39,9 @@ app.use("/api/product",productRoutes);
 app.use('/api/cart', require('./src/routes/cartRoutes'));
 //Marks as Favourite Api
 app.use('/api/favorites', require('./src/routes/favoriteRoutes'));
-
-
+// payment route
+// app.use("/api", paymentRoutes);
+app.use("/api",orderRoutes);
 // Error handling middleware
 app.use(errorHandler);
 

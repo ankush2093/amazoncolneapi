@@ -23,6 +23,8 @@ const userSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Favorite' // Reference to the Favorite schema (Optional)
     }],
+
+  order: { type: mongoose.Schema.Types.ObjectId, ref: "Order"},
   createdAt: {
     type: Date,
     default: Date.now
