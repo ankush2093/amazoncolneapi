@@ -9,8 +9,6 @@ router.get("/my-orders", authMiddleware, myOrders);
 
 // Route for admin to get all orders 
 router.get("/all-orders", allOrders);
-
-
 router.get("/analytics", getOrdersAnalytics);
 
 

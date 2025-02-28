@@ -4,11 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./src/middlewares/errorHandler");
 const connectDB = require("./src/config/dbConfig");
-
-// const reviewRoutes = require("./src/routes/reviewRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const productRoutes = require("./src/routes/productRoute")
-// const paymentRoutes =require("./src/routes/paymentRoutes")
 const orderRoutes  = require("./src/routes/orderRoutes")
 
 
@@ -37,11 +34,20 @@ app.use("/api/product",productRoutes);
 
 // Cart Route
 app.use('/api/cart', require('./src/routes/cartRoutes'));
+
 //Marks as Favourite Api
 app.use('/api/favorites', require('./src/routes/favoriteRoutes'));
-// payment route
-// app.use("/api", paymentRoutes);
+
+// order route with payment
 app.use("/api",orderRoutes);
+
+
+
+
+
+
+
+
 // Error handling middleware
 app.use(errorHandler);
 
