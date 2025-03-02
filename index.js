@@ -17,10 +17,10 @@ const app = express();
 // }));
 
 app.use(cors({
-  origin: "https://amazon-clone-frontend-neon.vercel.app", // Specific frontend origin
-  credentials: true, // Allow credentials (cookies, tokens)
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Required headers
+  origin: ["https://amazon-clone-frontend-neon.vercel.app", "http://localhost:3000/"],
+  credentials: true, 
+  methods: ["GET", "POST", "PUT", "DELETE"], 
+  allowedHeaders: ["Content-Type", "Authorization"], 
 }));
 
 
