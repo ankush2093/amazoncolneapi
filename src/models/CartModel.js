@@ -1,66 +1,51 @@
-// const mongoose = require('mongoose');
-
-// const cartSchema = new mongoose.Schema({
-//   user: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'User', 
-//     required: true
-//   },
-//   products: [
-//     {
-//       product: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: 'Product', 
-//         required: true
-//       },
-//       quantity: {
-//         type: Number,
-//         default: 1,
-//         min: 1
-//       }
-//     }
-//   ],
-//   createdAt: {
-//     type: Date,
-//     default: Date.now
-//   },
-//   isActive: {
-//     type: Boolean,
-//     default: true
-//   }
-// });
-
-// const Cart = mongoose.model('Cart', cartSchema);
-// module.exports = Cart;
-
-
-
 const mongoose = require('mongoose');
 
-const cartSchema = new mongoose.Schema(
-  {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-      index: true,
-    },
-    products: [
-      {
-        product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-        quantity: { type: Number, required: true, min: 1 },
-      },
-    ],
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
+const CartSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  items: [
+    {
+      id: { type: String, required: true },
+      title: { type: String, required: true },
+      price: { type: Number, required: true },
+      thumbnail: { type: String, required: true },
+      quantity: { type: Number, required: true },
+      description: { type: String },
+      storeName: { type: String },
+    },
+  ],
+});
+
+module.exports = mongoose.model('Cart', CartSchema);
 
 
-const Cart = mongoose.model('Cart', cartSchema);
-module.exports = Cart;
+// const mongoose = require("mongoose");
+
+// const CartSchema = new mongoose.Schema({
+//   userId: { type: String, required: true },
+//   items: [
+//     {
+//       id: { type: Number, required: true },
+//       title: String,
+//       price: Number,
+//       thumbnail: String,
+//       quantity: { type: Number, default: 1 },
+//       description: String,
+//       storeName: String,
+//     },
+//   ],
+//   favorites: [
+//     {
+//       id: { type: Number, required: true },
+//       title: String,
+//       price: Number,
+//       thumbnail: String,
+//       description: String,
+//     },
+//   ],
+// });
+
+// const Cart = mongoose.model("Cart", CartSchema);
+// module.exports = Cart;

@@ -11,11 +11,29 @@ const orderRoutes  = require("./src/routes/orderRoutes")
 
 const app = express();
 
+
+// Enable This when you are using local host
+// // Proper CORS Configuration
 // app.use(cors({
-//   origin: ["http://localhost:3000", "https://amazon-clone-frontend-neon.vercel.app/"],
-//   credentials: true, 
+//   origin: "http://localhost:3000",  // Allow only your frontend
+//   methods: "GET, POST, PUT, DELETE",
+//   allowedHeaders: "Content-Type, Authorization",
+//   credentials: true  
 // }));
 
+// // Handle Preflight (OPTIONS) Requests
+// app.options("*", cors({
+//   origin: "http://localhost:3000",
+//   credentials: true
+// }));
+
+// // Body parser
+// app.use(bodyParser.json());
+// app.use(express.json());
+
+
+
+//Dsable this when you are using local host
 app.use(cors({
   origin: ["https://amazon-clone-frontend-neon.vercel.app", "http://localhost:3000/"],
   credentials: true, 
@@ -35,7 +53,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // Connect to the database
 connectDB();
 
@@ -53,8 +70,6 @@ app.use("/api/product",productRoutes);
 // Cart Route
 app.use('/api/cart', require('./src/routes/cartRoutes'));
 
-//Marks as Favourite Api
-app.use('/api/favorites', require('./src/routes/favoriteRoutes'));
 
 // order route with payment
 app.use("/api",orderRoutes);

@@ -7,7 +7,7 @@ router.post("/checkout", authMiddleware, createOrder);
 router.post("/payment-verify", authMiddleware, verifyPayment);
 router.get("/my-orders", authMiddleware, myOrders);
 
-// Route for admin to get all orders 
+// Route for admin to get all orders (not protected)
 router.get("/all-orders", allOrders);
 router.get("/analytics", getOrdersAnalytics);
 

@@ -62,7 +62,7 @@ const loginUser = async (req, res) => {
       expiresIn: "1d",
     });
 
-    res.json({ token, userID: user._id, user: user.username });
+    res.json({ token, userId: user._id, user: user.username });
   } catch (error) {
     res.status(500).json({ message: "Server error. Please try again." });
   }
@@ -76,7 +76,7 @@ const otpGenerate = async (req, res) => {
     // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.json({ message: "👤 User does not exist!" });
+      return res.json({ message: "User does not exist!" });
     }
 
     // Generate OTP
@@ -115,7 +115,7 @@ const otpGenerate = async (req, res) => {
 
   } catch (error) {
     console.error("Error generating OTP:", error);
-    res.status(500).json({ message: "❌ Server error. Try again." });
+    res.status(500).json({ message: "Server error. Try again." });
   }
 };
 
